@@ -51,8 +51,6 @@ Post
 
 ![week1_relay12/relay_01_C__.jpg](week1_relay12/relay_01_C__.jpg)
 
-![week1_relay12/relay_01_C__%201.jpg](week1_relay12/relay_01_C__%201.jpg)
-
 ### Table 설계
 
 ![week1_relay12/Untitled.png](week1_relay12/Untitled.png)
