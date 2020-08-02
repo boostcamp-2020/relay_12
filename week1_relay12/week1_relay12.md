@@ -124,7 +124,7 @@
 
     ![week1_relay12/relay_01_C__.jpg](week1_relay12/relay_01_C__.jpg)
 
-    ![week1_relay12/relay_01_C__%202.jpg](week1_relay12/relay_01_C__%202.jpg)
+    ![week1_relay12/relay_01_C___2.jpg](week1_relay12/relay_01_C___2.jpg)
 
     ![week1_relay12/relay_01_C__%203.jpg](week1_relay12/relay_01_C__%203.jpg)
 
