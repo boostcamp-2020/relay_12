@@ -124,9 +124,9 @@
 
     ![week1_relay12/relay_01_C__.jpg](week1_relay12/relay_01_C__.jpg)
 
-    ![week1_relay12/relay_01_C__2.jpg](week1_relay12/relay_01_C__2.jpg)
+    ![week1_relay12/relay_01_C__%202.jpg](week1_relay12/relay_01_C__%202.jpg)
 
-    ![week1_relay12/relay_01_C__3.jpg](week1_relay12/relay_01_C__3.jpg)
+    ![week1_relay12/relay_01_C__%203.jpg](week1_relay12/relay_01_C__%203.jpg)
 
     웹 테스트 : [https://ovenapp.io/view/W3wsTpwQvk5pM0pkXLOMN9slnnUP7vDF/](https://ovenapp.io/view/W3wsTpwQvk5pM0pkXLOMN9slnnUP7vDF/)
 
