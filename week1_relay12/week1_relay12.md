@@ -1,4 +1,4 @@
-# week1_relay
+# week1_relay12
 
 #1 릴레이 프로젝트기획
 
@@ -26,36 +26,13 @@
 
 ### 데이터베이스 설계
 
-User
-
-- 이름
-- 학교 이름 → ex) [{중학교, 졸업년도}, {고등학교, 졸업년도}, {대학교, 졸업년도}]
-- 취미 / 관심사
-
-Group
-
-- 모임 이름
-- 주제 (학교, 취미 ... )
-- 태그
-
-Post
-
-- 제목
-- 내용
-- 작성 일시
-- 학교
-- 모임
-- 태깅
-
-[Untitled](https://www.notion.so/58c69b4af1b645099c65f82e895e19e1)
-
-![week1_relay12/relay_01_C__.jpg](week1_relay12/relay_01_C__.jpg)
+[개체및 속성 분석](https://www.notion.so/e5cbf40d73904aacb0a6c40aba11cd4c)
 
 ### Table 설계
 
 ![week1_relay12/Untitled.png](week1_relay12/Untitled.png)
 
-## A. 기능
+## A 기능 잡담 필터링
 
 - 주요기능
 
@@ -145,11 +122,11 @@ Post
     - 태그는 포함관계를 가질 수 있다.
 - 화면
 
-    ![week1_relay12/relay_01_C__%202.jpg](week1_relay12/relay_01_C__%202.jpg)
+    ![week1_relay12/relay_01_C__.jpg](week1_relay12/relay_01_C__.jpg)
 
     ![week1_relay12/relay_01_C___(1).jpg](week1_relay12/relay_01_C___(1).jpg)
 
-    ![week1_relay12/relay_01_C__%203.jpg](week1_relay12/relay_01_C__%203.jpg)
+    ![week1_relay12/relay_01_C__%201.jpg](week1_relay12/relay_01_C__%201.jpg)
 
     웹 테스트 : [https://ovenapp.io/view/W3wsTpwQvk5pM0pkXLOMN9slnnUP7vDF/](https://ovenapp.io/view/W3wsTpwQvk5pM0pkXLOMN9slnnUP7vDF/)
 
