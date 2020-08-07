@@ -15,6 +15,9 @@
     border-bottom:solid black 1px;
     font-weight:bold;
     background-color:grey;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
 }
 
 .WriteButtonContainer{

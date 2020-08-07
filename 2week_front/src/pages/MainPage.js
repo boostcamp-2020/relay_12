@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Posts from "../components/Post/Posts";
 import Pagination from "../components/Post/Pagination";
 import PostItem from "../components/Post/PostItem";
-import {getPost} from "../lib/api"
+import {getPosts} from "../lib/api"
 import './mainpage.css'
 
 const MainPage = ()=>{
@@ -32,40 +32,44 @@ const MainPage = ()=>{
 
 
   	useEffect(() => {
-    	// 	const fetchPosts = async () => {
-      	// 	setLoading(true);
-      	// 	const res = awaut getPost()//await axios.get("/board");
-      	// 	setPosts(res.data);
-      	// 	setLoading(false);
-    	// };
+    		const fetchPosts = async () => {
+      		setLoading(true);
+      		const res = await getPosts()//await axios.get("/board");
+            console.log(res) 
+            setTotalPosts(res.data.list)
+            setPosts(res.data.list);
+      		setLoading(false);
+    	};
+        fetchPosts();
 
-        // fetchPosts();
-        const test_data =[
-            {
-                postId: 1234,
-                title: '제목1',
-                username: '작성자1',
-                createdAt: 20200807,
-                isChat: false,
-            },
-            {
-                postId: 1235,
-                title: '제목2',
-                username: '작성자2',
-                createdAt: 20200805,
-                isChat: true
-            },
-            {
-                postId: 12342,
-                title: '제2',
-                username: '작성자2',
-                createdAt: 20200805,
-                isChat: true
-            },
-        ]
-        setTotalPosts(test_data)
-        setPosts(test_data)
-        setLoading(false)
+
+        /*테스팅 데이터 */
+        // const test_data =[
+        //     {
+        //         postId: 1234,
+        //         title: '거짓',
+        //         username: '작성자1',
+        //         createdAt: 20200807,
+        //         isChat: false,
+        //     },
+        //     {
+        //         postId: 1235,
+        //         title: '참',
+        //         username: '작성자2',
+        //         createdAt: 20200805,
+        //         isChat: true
+        //     },
+        //     {
+        //         postId: 12342,
+        //         title: '참',
+        //         username: '작성자2',
+        //         createdAt: 20200805,
+        //         isChat: true
+        //     },
+        // ]
+        // setTotalPosts(test_data)
+        // setPosts(test_data)
+        // setLoading(false)
      }, []);   
      
      const indexOfLastPost = currentPage * postsPerPage;

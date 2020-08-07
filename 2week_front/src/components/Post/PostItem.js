@@ -3,13 +3,13 @@ import './style.css';
 const PostItem = ({ post  }) => {
 
     return (
-          <li key={post.postId} className="list_item">
-             <span className="list_item_text"> {post.postId}</span>
-             <span className="list_item_text seperator"> |</span>
-           <span className="list_item_text">{post.title}</span>
-           <span className="list_item_text seperator"> |</span>
-           <span className="list_item_text"> {post.username}</span>
-          </li>
+      <>
+          <li className="list_item">{post.postId}</li>
+          <li className="list_item seperator">|</li>
+          <li className="list_item">{post.title}</li>
+          <li className="list_item seperator">|</li>
+          <li className="list_item">{post.username}</li>
+          </>
     );
   };
   
