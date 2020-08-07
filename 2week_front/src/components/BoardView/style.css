@@ -1,28 +1,72 @@
 h2 {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 span {
-    padding: 0 20px;
+  padding: 0 20px;
 }
 
 .BoardView {
-    display:flex;
-    flex-direction: column;
-    margin: 0 auto;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: left;
 }
 
-.title {
-    border-bottom: 2px solid black;
+.BoardView .board-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
-.info {
-    border-bottom: 2px solid black;
-    text-align: right;
+.BoardView .board-header span {
+  padding: 0.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.BoardView .board-header span:hover {
+  background-color: #eee;
+}
+
+.BoardView .board-header h2 {
+  display: inline-block;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.BoardView .board-header .btn-container button {
+  margin-left: 1rem;
+  padding: 0.5rem 0.75rem;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.BoardView .board-header .btn-container button:hover {
+  background-color: #ddd;
+}
+
+.BoardView .info {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.BoardView .info span {
+  padding: 0;
+  padding-right: 0.75rem;
 }
 
 .board {
-    max-width: 840px;
-    padding-top: 20px;
+  padding: 1rem;
+  padding-top: 1.25rem;
+}
+
+.board p {
+  width: 100%;
 }

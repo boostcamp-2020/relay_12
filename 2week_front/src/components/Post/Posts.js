@@ -1,5 +1,5 @@
-import React from "react";
-import PostItem from './PostItem'
+import React from 'react';
+import PostItem from './PostItem';
 import { Link } from 'react-router-dom';
 import './style.css';
 const Posts = ({ posts, loading }) => {
@@ -13,8 +13,9 @@ const Posts = ({ posts, loading }) => {
         <ul className="post_list">
           <PostItem post={post}/>
           </ul></Link>
+
       ))}
-      </>
+    </>
   );
 };
 
