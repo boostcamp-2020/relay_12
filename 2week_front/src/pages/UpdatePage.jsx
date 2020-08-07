@@ -1,12 +1,28 @@
-import React from "react";
-import Form from "./Form";
+import React, { useState } from "react";
+import Form from "../components/Forms/Form";
+import { withRouter } from "react-router-dom";
+import { updatePost } from "../lib/api";
 
-const UpdatePage = () => {
-  const handleSubmit = () => {
-    alert("기존 글 업데이트!");
+
+const UpdatePage = (props) => {
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(title, body);
+    updatePost(0, title, body);  // postId 는 현재 임의의 값입니다.
+    props.history.push('/');
   };
 
-  return <Form type="UPDATE" />;
+  return(
+    <Form
+      type="UPDATE"
+      setTitle={setTitle}
+      setBody={setBody}
+      handleSubmit={handleSubmit}
+    />
+  );
 };
 
-export default UpdatePage;
+export default withRouter(UpdatePage);
