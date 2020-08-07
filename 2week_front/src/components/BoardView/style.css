@@ -24,8 +24,5 @@ span {
 
 .board {
     max-width: 840px;
-}
-p{
-    max-width: 500px;
-    white-space: normal ;
+    padding-top: 20px;
 }

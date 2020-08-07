@@ -24,7 +24,7 @@ function App() {
             <Route path="/posts/:postId">
               {BoardView}
             </Route>
-            <Route path="/write">{CreatePage}</Route>
+            <Route path="/write">{<CreatePage />}</Route>
           </Switch>
         </main>
 
