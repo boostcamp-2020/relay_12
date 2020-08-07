@@ -2,13 +2,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const mysql = require('mysql');
 const dbconfig = require('./config/database.js');
 const connection = mysql.createConnection(dbconfig);
-
-const cors = require('cors');
-
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -35,60 +32,56 @@ app.get('/', function (req, res) {
     res.send('ROOT');
 });
 
-// get board
+/**
+ * 전체 게시글 리스트 조회
+ * 예외 처리 x
+ */
 app.get('/board', function(req,res){
-  function list(postId, title, username, createAt, isChat){
-      this.postId = postId
-      this.title = title
-      this.username = username
-      this.createAt = createAt
-      this.isChat = isChat
-  }
-  let suc = {
-    status: 200,
-    success: true,  
-    message: '전체 게시글 리스트 조회 성공',
-    data: {
-      list: []
-    }
-  }
-  let fail = {
-    status: 400,
-    success: false,  
-    message: '전체 게시글 리스트 조회 실패',
-    data: null
-  }
-  // connection.connect();
-  // connection.query('SELECT postId, title, username, createAt, isChat from Post', (error, rows, fields) => {
-  //   if (error)res.send(fail);
-  //   else
-  //       suc.data.list.push(new list(rows.postId, rows.title,rows.username, rows.createAt, rows.isChat))
-  // });
-  res.send(suc)
+    connection.query('SELECT * from board;', (error, rows) => {
+      if (error) {
+        const data = resObject(400, false, '전체 게시글 리스트 조회 실패');
+        res.send(data)
+        throw error;
+      }
+        const data = resObject(200, true, '전체 게시글 리스트 조회 성공', rows);
+        res.send(data)
+    });
+    
 });
 
-
+/**
+ * 게시글 상세 정보 조회
+ * 예외 처리 x
+ */
 app.get('/board/:postId', function (req, res) {
   const postId = req.params.postId;
 
   const sql = 'SELECT * FROM board WHERE ID = ?';
   connection.query(sql, postId, (error, rows, fields) => {
-    if (error) throw error;
+    if (error) {
+      const data = resObject(400, false, '게시글 상세 정보 조희 실패');
+      res.send(data);
+      throw error;
+    }
     console.log(rows); // isChat : false 가 아니라 0이 입력됨 0: false, 1:true로 판단
     const data = resObject(200, true, '게시글 상세 정보 조회 성공', rows);
-    res.send(data)
+    res.send(data);
   });
   
 });
 
-// 게시글 등록
+/**
+ * 게시글 등록
+ * 예외 처리 x
+ */
 app.post('/board', function (req, res) {
   const sql = 'INSERT INTO board (title, body, userId) VALUES(?, ?, ?)';
   const params = [req.body.title, req.body.body, req.body.userId];
+  // params[0] = null // 실패 테스트용
   // console.log(params)
   connection.query(sql, params, (error, rows, fields) => {
     if (error) {
-      const data = resObject(200, true, '게시글 등록 성공');
+      const data = resObject(400, false, '게시글 등록 실패');
       res.send(data)
       throw error;
     }
@@ -97,8 +90,12 @@ app.post('/board', function (req, res) {
   });
 });
 
-// 게시글 수정
-// DB 진행 중 
+
+/**
+ * 게시글 수정
+ * 진행 중
+ * 예외 처리 X
+ */
 app.put('/board', function(req, res) {
  
   // connection.query(sql, params, (error, rows, fields) => {
@@ -109,18 +106,26 @@ app.put('/board', function(req, res) {
 
 });
 
+/**
+ * 게시글 삭제 
+ * 예외 처리 x 
+ * - 없는 postId 일 때 400 반환하기 (x)
+ */
 app.delete('/board/:postId', (req, res) => {
   // console.log(req)
   const params = req.params.postId;
-  const sql = "DELETE FROM board WHERE id = 0";
-  console.log("params: ", params, req.query)
+  const sql = "DELETE FROM board WHERE id = ?";
   connection.query(sql, params, (error) => {
-    if (error) throw error;
+    if (error) {
+      const data = resObject(400, false, '게시글 삭제 실패');
+      console.log("삭제 실패");
+      res.send(data)
+      throw error;
+    }
     console.log("삭제 성공");
-    const data = resObject(200, true, '게시글 등록 성공');
+    const data = resObject(200, true, '게시글 삭제 성공');
     res.send(data)
   });
-
 })
 
 
