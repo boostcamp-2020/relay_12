@@ -1,5 +1,6 @@
 import React from "react";
 import PostItem from './PostItem'
+import { Link } from 'react-router-dom';
 import './style.css';
 const Posts = ({ posts, loading }) => {
   if (loading) {
@@ -8,7 +9,7 @@ const Posts = ({ posts, loading }) => {
   return (
     <ul className="post_list">
       {posts.map((post) => (
-        <PostItem post={post}/>
+        <Link to={'/posts/'+post.postId}><PostItem post={post}/></Link>
         // <li key={post.postId} className="list_item">
         //    <span> {post.postId}</span>
         //  <span>{post.title}</span>

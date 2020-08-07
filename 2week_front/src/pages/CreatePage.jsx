@@ -13,6 +13,7 @@ const CreatePage = (props) => {
     console.log(title, body);
     addPost(title, body);
     props.history.push("/");
+
   };
 
   return (

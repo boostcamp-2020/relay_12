@@ -10,22 +10,6 @@ const boardView = [
     'createdAt' : '1',
     'isChat' : '1',
     },  
-    {
-    'postId' : '2', 
-    'title' : '2',
-    'body' : '3',
-    'username' : '2',
-    'createdAt' : '2',
-    'isChat' : '2',
-    },  
-    {
-    'postId' : '3', 
-    'title' : '3',
-    'body' : '3',
-    'username' : '3',
-    'createdAt' : '3',
-    'isChat' : '3',
-    },
 ]
 
 const BoardView = () =>  {

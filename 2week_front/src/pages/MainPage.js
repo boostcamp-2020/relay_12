@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Posts from "../components/Post/Posts";
 import Pagination from "../components/Post/Pagination";
 import PostItem from "../components/Post/PostItem";
-
+import {getPost} from "../lib/api"
 import './mainpage.css'
 
 const MainPage = ()=>{
@@ -34,7 +34,7 @@ const MainPage = ()=>{
   	useEffect(() => {
     	// 	const fetchPosts = async () => {
       	// 	setLoading(true);
-      	// 	const res = await axios.get("/board");
+      	// 	const res = awaut getPost()//await axios.get("/board");
       	// 	setPosts(res.data);
       	// 	setLoading(false);
     	// };
@@ -72,7 +72,7 @@ const MainPage = ()=>{
      const indexOfFirstPost = indexOfLastPost - postsPerPage;
      const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
      const paginate = (pageNumber) => setCurrentPage(pageNumber);
-     const PostHeader = {postId: 'No.',title: '제목',username: '작성자',}
+     const PostHeader = {postId: 'No.',title: '제목',username: '작성자',isHeader:''}
 
 
     return (
@@ -82,10 +82,13 @@ const MainPage = ()=>{
 
         <div className="BoardContainer">    <
             ul className="BoardHeader">
-      <PostItem className="hi" post={PostHeader}></PostItem>
+      <PostItem post={PostHeader}></PostItem>
       </ul>
       <Posts posts={currentPosts} loading={loading} />
-      <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
+    </div>
+    <div>
+<div><Pagination currentPage={currentPage} postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} /></div>
+    <div className="WriteButtonContainer"><Link to="/write"><button>글쓰기</button></Link> </div>  
     </div>
     </div>
 
