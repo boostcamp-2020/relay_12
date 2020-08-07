@@ -20,10 +20,10 @@ function App() {
               {/* 게시글 목록 리스트 컴포넌트 위치 */}
               <MainPage />
             </Route>
-            <Route path="/posts/:postId">
-              {/* 게시글 조회 컴포넌트 위치 */}
+            <Route path="/posts/:postId">{/* 게시글 조회 컴포넌트 위치 */}</Route>
+            <Route path="/write">
+              <CreatePage />
             </Route>
-            <Route path="/write">{CreatePage}</Route>
           </Switch>
         </main>
 
