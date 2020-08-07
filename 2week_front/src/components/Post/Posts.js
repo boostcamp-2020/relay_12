@@ -7,16 +7,14 @@ const Posts = ({ posts, loading }) => {
     return <h2>Loading...</h2>;
   }
   return (
-    <ul className="post_list">
+ <>
       {posts.map((post) => (
-        <Link to={'/posts/'+post.postId}><PostItem post={post}/></Link>
-        // <li key={post.postId} className="list_item">
-        //    <span> {post.postId}</span>
-        //  <span>{post.title}</span>
-        //  <span> {post.username}</span>
-        // </li>
+        <Link to={'/posts/'+post.postId}>
+        <ul className="post_list">
+          <PostItem post={post}/>
+          </ul></Link>
       ))}
-    </ul>
+      </>
   );
 };
 
