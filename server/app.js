@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -6,12 +7,21 @@ const mysql = require('mysql');
 const dbconfig = require('./config/database.js');
 const connection = mysql.createConnection(dbconfig);
 
+const cors = require('cors');
+
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
+app.use(cors());
+
+// const corsOptions = {
+//   origin: 'http://localhost:3000', // 허락하고자 하는 요청 주소
+//   credentials: true, // true로 하면 설정한 내용을 response 헤더에 추가 해줍니다.
+// };
+
+// app.use(cors(corsOptions)); // config 추가
 
 const resObject = (status, success, message, data) => {    
   this.status = status,
