@@ -1,7 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
-import Posts from "../components/Posts";
-import Pagination from "../components/Pagination";
+import Posts from "../components/Post/Posts";
+import Pagination from "../components/Post/Pagination";
+import PostItem from "../components/Post/PostItem";
+
+import './mainpage.css'
 
 const MainPage = ()=>{
 
@@ -9,7 +12,6 @@ const MainPage = ()=>{
 
     const [TotalPosts,setTotalPosts] = useState([]);
     const [posts, setPosts] = useState([]);
-    const [FilteredPosts,setFilteredPosts] =useState([]);
 	const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1); 
     const [postsPerPage] = useState(2); 
@@ -17,7 +19,6 @@ const MainPage = ()=>{
 
 
     const FilterChat = ()=>{
-        console.log('hi')
         if(flag){
         let filtered = TotalPosts.filter((e)=>{return !e.isChat})
         setPosts(filtered)
@@ -71,15 +72,23 @@ const MainPage = ()=>{
      const indexOfFirstPost = indexOfLastPost - postsPerPage;
      const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
      const paginate = (pageNumber) => setCurrentPage(pageNumber);
+     const PostHeader = {postId: 'No.',title: '제목',username: '작성자',}
 
 
     return (
     <>
-    <div className="container">
-        <button onClick={FilterChat}>토글버튼</button>
+    <div className="container ">
+        <div className="FilterbtnContainer"><button onClick={FilterChat}>{flag?"잡답거르기":"잡답보기"}</button></div>
+
+        <div className="BoardContainer">    <
+            ul className="BoardHeader">
+      <PostItem className="hi" post={PostHeader}></PostItem>
+      </ul>
       <Posts posts={currentPosts} loading={loading} />
       <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
     </div>
+    </div>
+
     </>
         )
 }

@@ -1,0 +1,18 @@
+.pagination{
+    display:flex;
+    flex-direction:row;
+    list-style: none;
+    justify-content: center;
+}
+
+.pagination .pagination_item{
+    width:3em;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    border:solid 1px black;
+}
+
+.list_item{
+    list-style: none;
+}

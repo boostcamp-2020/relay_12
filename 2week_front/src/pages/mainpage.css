@@ -1,0 +1,14 @@
+.container{
+    height:100%;
+}
+
+
+.FilterbtnContainer{
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-end;
+}
+.BoardHeader{
+    border:solid black 1px;
+    font-weight:bold;
+}
