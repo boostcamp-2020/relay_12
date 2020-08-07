@@ -4,6 +4,7 @@ import './style.css';
 const Board = () => {
 
     return (
+
         <div className="BoardView">
             <div className="title">
                 <h2>title</h2>

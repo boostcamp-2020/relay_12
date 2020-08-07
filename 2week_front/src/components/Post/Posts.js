@@ -9,7 +9,7 @@ const Posts = ({ posts, loading }) => {
   return (
  <>
       {posts.map((post) => (
-        <Link to={'/posts/'+post.postId}>
+        <Link to={{pathname:'/posts/'+post.postId,state:{data:post}}}>
         <ul className="post_list">
           <PostItem post={post}/>
           </ul></Link>
