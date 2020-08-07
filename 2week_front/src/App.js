@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import MainPage from './pages/MainPage';
 import CreatePage from './pages/CreatePage';
+import BoardView from './pages/BoardView';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
               <MainPage />
             </Route>
             <Route path="/posts/:postId">
-              {/* 게시글 조회 컴포넌트 위치 */}
+              {BoardView}
             </Route>
             <Route path="/write">{CreatePage}</Route>
           </Switch>
