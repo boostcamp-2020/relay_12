@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "relay12 server",
   "main": "app.js",
-  "scripts": {},
+  "scripts": {
+    "start" : "npx nodemon app.js"
+  },
   "author": "hyex",
   "license": "ISC",
   "devDependencies": {
