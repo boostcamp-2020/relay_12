@@ -29,3 +29,23 @@ python is_similar.py "문화 컨텐츠 관련글"
 > is_similar.py 가 실행될 때 출력된 사항들이 callback 에 담겨 반환된다.
 > True 라는 문자열이 반환되면 모임과 관련된 글이고
 > False 이면 연관성이 떨어지는 글이다.
+
+### 실행 예시
+```
+const pythonShell = require('python-shell').PythonShell
+
+const options = {
+    mode:'text',
+    pythonPath: "",
+    scriptPath: '',
+    pythonOptions: ['-u'],
+    args:["오늘 영화 어땟어?"]
+}
+
+pythonShell.run("is_similar.py", options, (err, result)=>{
+    if(err)
+        console.log(err)
+    else
+        console.log(result)
+})
+```
