@@ -1,0 +1,27 @@
+.container{
+    height:100%;
+}
+
+
+.FilterbtnContainer{
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-end;
+}
+.BoardHeader{
+    margin-bottom:1em;
+    margin-top:1em;
+    border-top:solid black 1px;
+    border-bottom:solid black 1px;
+    font-weight:bold;
+    background-color:grey;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+}
+
+.WriteButtonContainer{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+}

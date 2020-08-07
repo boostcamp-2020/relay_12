@@ -1,0 +1,28 @@
+h2 {
+    font-size: 50px;
+}
+
+span {
+    padding: 0 20px;
+}
+
+.BoardView {
+    display:flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    border-bottom: 2px solid black;
+}
+
+.info {
+    border-bottom: 2px solid black;
+    text-align: right;
+}
+
+.board {
+    max-width: 840px;
+    padding-top: 20px;
+}
