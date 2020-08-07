@@ -63,4 +63,36 @@ app.put('/board/:postId', function(req, res) {
     res.send(data)
 });
 
+// get board
+app.get('/board', function(req,res){
+    function list(postId, title, username, createAt, isChat){
+        this.postId = postId
+        this.title = title
+        this.username = username
+        this.createAt = createAt
+        this.isChat = isChat
+    }
+    let suc = {
+      status: 200,
+      success: true,  
+      message: '전체 게시글 리스트 조회 성공',
+      data: {
+        list: []
+      }
+    }
+    let fail = {
+      status: 400,
+      success: false,  
+      message: '전체 게시글 리스트 조회 실패',
+      data: null
+    }
+    // connection.connect();
+    // connection.query('SELECT postId, title, username, createAt, isChat from Post', (error, rows, fields) => {
+    //   if (error)res.send(fail);
+    //   else
+    //       suc.data.list.push(new list(rows.postId, rows.title,rows.username, rows.createAt, rows.isChat))
+    // });
+    res.send(suc)
+});
+
 app.listen(3000, () => console.log('Server is running on port 3000...'));
