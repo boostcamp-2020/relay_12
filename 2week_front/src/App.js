@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import MainPage from './pages/MainPage';
+import CreatePage from './pages/CreatePage';
 
 function App() {
   return (
@@ -19,8 +20,10 @@ function App() {
               {/* 게시글 목록 리스트 컴포넌트 위치 */}
               <MainPage />
             </Route>
-            <Route path="/posts/:postId">{/* 게시글 조회 컴포넌트 위치 */}</Route>
-            <Route path="/write">{/* 게시글 작성 컴포넌트 위치 */}</Route>
+            <Route path="/posts/:postId">
+              {/* 게시글 조회 컴포넌트 위치 */}
+            </Route>
+            <Route path="/write">{CreatePage}</Route>
           </Switch>
         </main>
 
