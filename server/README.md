@@ -5,6 +5,14 @@
 
 ## HOW TO START?
 
+### server
+1. download repository
+2. cd /server
+3. npm install
+4. npm run start ( = npx nodemon app.js = node app.js)
+
+(DB 설치 전이라면, node app_beforeSQL.js 로 테스트 가능합니다.)
+
 ### DB
 1. install [mysql_workbench](https://dev.mysql.com/downloads/workbench/)
 2. + 버튼을 클릭해주세요
@@ -15,9 +23,3 @@
 5. 번개 모양 클릭 시 테이블 생성, 완료!
 ![db_instruction(3)](./image/server_DBinst(3).png)
 
-
-### server
-1. download repository
-2. cd /server
-3. npm install
-4. npm run start ( = npx nodemon app.js = node app.js)
