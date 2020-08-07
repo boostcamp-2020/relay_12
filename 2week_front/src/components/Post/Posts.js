@@ -7,13 +7,13 @@ const Posts = ({ posts, loading }) => {
     return <h2>Loading...</h2>;
   }
   return (
-    <>
-      {posts.map((post, idx) => (
-        <Link to={'/posts/' + post.postId}>
-          <ul className="post_list">
-            <PostItem post={post} />
-          </ul>
-        </Link>
+ <>
+      {posts.map((post) => (
+        <Link key={post.postId} to={{pathname:'/posts/'+post.postId,state:{data:post}}}>
+        <ul className="post_list">
+          <PostItem post={post}/>
+          </ul></Link>
+
       ))}
     </>
   );

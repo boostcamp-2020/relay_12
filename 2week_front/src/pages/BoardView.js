@@ -11,8 +11,30 @@ const b = {
   isChat: '잡담여부',
 };
 
-const BoardView = ({ match }) => {
-  const [post, setPost] = useState(null);
+const BoardView = ({location}) =>  {
+    
+    //게시글 데이터
+    console.log('location',location.state.data)
+
+        return (
+            <div>
+                { boardView.map( b => {
+                    return (
+                        <Board
+                            key={b.postId}
+                            postId = {b.postId}
+                            title = {b.title}
+                            body = {b.body}
+                            username = {b.username}
+                            createdAt = {b.createdAt}
+                            isChat = {b.isChat}
+                        />
+                    )
+                })}
+            </div>
+        )
+}
+
 
   useEffect(() => {
     const fetchPost = () => {
