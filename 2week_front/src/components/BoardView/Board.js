@@ -1,9 +1,16 @@
-import React from 'react'
+import React from 'react';
+
 
 const Board = () => {
-    <div>
-        
-    </div>
+    // return (
+    //     <div className="title">
+            
+    //     </div>
+    //     <div className="board">
+            
+    //     </div>
+    // )
+    
 }
 
-export default index;
+export default Board;
