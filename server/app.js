@@ -97,17 +97,25 @@ app.post('/board', function (req, res) {
 
 /**
  * 게시글 수정
- * 진행 중
+ * DONE
  * 예외 처리 X
  */
-app.put('/board', function(req, res) {
- 
-  // connection.query(sql, params, (error, rows, fields) => {
-  //   if (error) throw error;
-  //   const data = resObject(200, true, '게시글 수정 성공');
-  //   res.send(data)
-  // });
-
+app.put('/board/:postId', function (req, res) {
+  let body = req.body;
+  const postId = req.params.postId
+  let params = [body.title, body.body];
+  const sql = 'Update board set title = \'' + params[0] + '\', body = \'' + params[1] + '\'where id = \'' + postId + '\''
+  connection.query(sql, (error, rows) => {
+      if (error) {
+        const data = resObject(400, false, '게시글 수정 실패');
+        console.log("수정 실패");
+        res.send(data)
+        throw error;
+      }
+      const data = resObject(200, true, '게시글 수정 성공');
+      console.log("수정 성공");
+      res.send(data);
+  });
 });
 
 /**
