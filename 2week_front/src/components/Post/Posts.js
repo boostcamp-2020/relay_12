@@ -1,5 +1,5 @@
-import React from "react";
-import PostItem from './PostItem'
+import React from 'react';
+import PostItem from './PostItem';
 import { Link } from 'react-router-dom';
 import './style.css';
 const Posts = ({ posts, loading }) => {
@@ -9,12 +9,13 @@ const Posts = ({ posts, loading }) => {
   return (
  <>
       {posts.map((post) => (
-        <Link to={'/posts/'+post.postId}>
+        <Link key={post.postId} to={{pathname:'/posts/'+post.postId,state:{data:post}}}>
         <ul className="post_list">
           <PostItem post={post}/>
           </ul></Link>
+
       ))}
-      </>
+    </>
   );
 };
 

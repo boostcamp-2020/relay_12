@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import MainPage from './pages/MainPage';
 import CreatePage from './pages/CreatePage';
+import UpdatePage from './pages/UpdatePage';
 import BoardView from './pages/BoardView';
 
 function App() {
@@ -21,10 +22,13 @@ function App() {
               {/* 게시글 목록 리스트 컴포넌트 위치 */}
               <MainPage />
             </Route>
-            <Route path="/posts/:postId">
+            <Route exact path="/posts/:postId">
               {BoardView}
             </Route>
-            <Route path="/write">{<CreatePage />}</Route>
+            <Route path="/posts/update/:postId" component={UpdatePage} />
+            <Route path="/write">
+              {<CreatePage />}
+            </Route>
           </Switch>
         </main>
 
