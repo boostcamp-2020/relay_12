@@ -6,12 +6,16 @@ const cors = require('cors');
 const mysql = require('mysql');
 const dbconfig = require('./config/database.js');
 const connection = mysql.createConnection(dbconfig);
+const pythonReader = require('./pythonReader');
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(cors());
+
+// console.log(pythonReader("testPythonReader.py", "d"));
+
 
 // const corsOptions = {
 //   origin: 'http://localhost:3000', // 허락하고자 하는 요청 주소
