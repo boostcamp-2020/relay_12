@@ -13,9 +13,10 @@ const boardView = [
 ]
 
 const BoardView = ({location}) =>  {
+    
     //게시글 데이터
     console.log('location',location.state.data)
-    
+
         return (
             <div>
                 { boardView.map( b => {

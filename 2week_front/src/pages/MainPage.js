@@ -32,47 +32,48 @@ const MainPage = ()=>{
 
 
   	useEffect(() => {
-    	// 	const fetchPosts = async () => {
-      	// 	setLoading(true);
-      	// 	const res = await getPosts()//await axios.get("/board");
-        //     console.log(res) 
-        //     setTotalPosts(res.data.list)
-        //     setPosts(res.data.list);
-      	// 	setLoading(false);
-    	// };
-        // fetchPosts();
 
 
-        // /*테스팅 데이터 */
-        const test_data =[
-            {
-                postId: 1234,
-                title: '거짓',
-                username: '작성자1',
-                createdAt: 20200807,
-                body:'blhajasdlfsadlfkj',
-                isChat: false,
-            },
-            {
-                postId: 1235,
-                title: '참',
-                username: '작성자2',
-                body:'qw;ierjwel;krj',
-                createdAt: 20200805,
-                isChat: true
-            },
-            {
-                postId: 12342,
-                title: '참',
-                username: '작성자2',
-                body:'qwerlwqekrn;kln',
-                createdAt: 20200805,
-                isChat: true
-            },
-        ]
-        setTotalPosts(test_data)
-        setPosts(test_data)
-        setLoading(false)
+            // const fetchPosts = async () => {
+            // setLoading(true);
+            // const res = await getPosts()//await axios.get("/board");
+            // setTotalPosts(res.data.list)
+            // setPosts(res.data.list);
+            // setLoading(false);
+            //    };
+            // fetchPosts();
+
+      // /*테스팅 데이터 */
+            const test_data =[
+                {
+                    postId: 1234,
+                    title: '거짓',
+                    username: '작성자1',
+                    createdAt: 20200807,
+                    body:'blhajasdlfsadlfkj',
+                    isChat: false,
+                },
+                {
+                    postId: 1235,
+                    title: '참',
+                    username: '작성자2',
+                    body:'qw;ierjwel;krj',
+                    createdAt: 20200805,
+                    isChat: true
+                },
+                {
+                    postId: 12342,
+                    title: '참',
+                    username: '작성자2',
+                    body:'qwerlwqekrn;kln',
+                    createdAt: 20200805,
+                    isChat: true
+                },
+            ]
+            setTotalPosts(test_data)
+            setPosts(test_data)
+            setLoading(false)
+
      }, []);   
      
      const indexOfLastPost = currentPage * postsPerPage;
