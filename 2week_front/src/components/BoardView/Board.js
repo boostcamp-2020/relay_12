@@ -3,8 +3,13 @@ import { deletePost } from "../../lib/api";
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import './style.css';
+import { FaChevronLeft } from 'react-icons/fa';
 
-const Board = (props) => {
+const Board = ({ title, username, createdAt, body, key, history }) => {
+  const handleUpdate = () => {
+    // 상세 정보 수정 페이지로 이동
+    console.log('수정');
+  };
 
     const handleRemove = async (e) => {
         e.preventDefault();
