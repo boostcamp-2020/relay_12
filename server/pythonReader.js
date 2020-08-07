@@ -6,7 +6,7 @@ const pythonReader = (fileName, args) => {
     mode: 'text',
     pythonPath: '',
     pythonOptions: ['-u'],
-    scriptPath: '',
+    scriptPath: './nlp/',
     args: args
   };
   

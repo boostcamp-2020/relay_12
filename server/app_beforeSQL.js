@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
 app.get('/board', function(req,res){
   console.log("전체 게시글 리스트 조회 API")
   const data = resObject(200, true, 'TEST', "TEST");
-  res.send(suc)
+  res.send(data)
 });
 
 // 게시글 상세 조회

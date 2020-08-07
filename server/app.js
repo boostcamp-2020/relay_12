@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(cors());
 
-// console.log(pythonReader("testPythonReader.py", "d"));
+// console.log(pythonReader("is_similar.py", "d"));
 
 
 // const corsOptions = {
