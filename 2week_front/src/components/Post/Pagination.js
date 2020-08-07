@@ -1,7 +1,7 @@
 import React from "react";
 import './style.css';
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+const Pagination = ({ currentPage,postsPerPage, totalPosts, paginate }) => {
   const pageNumber = [];
   
   // Math.ceil: 올림
@@ -14,7 +14,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
       {pageNumber.map((pageNum) => (
         <li
           key={pageNum}
-          className="pagination_item"
+          className={`pagination_item${ currentPage === pageNum ? ' active' : ''}`}
           onClick={() => paginate(pageNum)}
         >
           {pageNum}
