@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-const mysql = require('mysql');
-const dbconfig = require('./config/database.js');
-const connection = mysql.createConnection(dbconfig);
+// const mysql = require('mysql');
+// const dbconfig = require('./config/database.js');
+// const connection = mysql.createConnection(dbconfig);
 
 const cors = require('cors');
 
@@ -64,20 +64,26 @@ app.get('/board', function(req,res){
   //   else
   //       suc.data.list.push(new list(rows.postId, rows.title,rows.username, rows.createAt, rows.isChat))
   // });
+  data.set('body', "testData, DB 연결 후 진짜 데이터 보내겠습니당")
   res.send(suc)
 });
 
-
+// 게시글 상세 조회
 app.get('/board/:postId', function (req, res) {
-  const postId = req.params.postId;
+    const postId = req.params.postId;
+    console.log("postId: ", postId)
 
-  const sql = 'SELECT * FROM board WHERE ID = ?';
-  connection.query(sql, postId, (error, rows, fields) => {
-    if (error) throw error;
-    console.log(rows); // isChat : false 가 아니라 0이 입력됨 0: false, 1:true로 판단
-    const data = resObject(200, true, '게시글 상세 정보 조회 성공', rows);
+//   const sql = 'SELECT * FROM board WHERE ID = ?';
+//   connection.query(sql, postId, (error, rows, fields) => {
+//     if (error) throw error;
+//     console.log(rows); // isChat : false 가 아니라 0이 입력됨 0: false, 1:true로 판단
+//     const data = resObject(200, true, '게시글 상세 정보 조회 성공', rows);
+//     res.send(data)
+//   });
+    
+    const data = resObject(200, true, '게시글 상세 정보 조회 성공', "not install SQL state");
+    // console.log(data)
     res.send(data)
-  });
   
 });
 
@@ -86,41 +92,45 @@ app.post('/board', function (req, res) {
   const sql = 'INSERT INTO board (title, body, userId) VALUES(?, ?, ?)';
   const params = [req.body.title, req.body.body, req.body.userId];
   // console.log(params)
-  connection.query(sql, params, (error, rows, fields) => {
-    if (error) {
-      const data = resObject(200, true, '게시글 등록 성공');
-      res.send(data)
-      throw error;
-    }
+//   connection.query(sql, params, (error, rows, fields) => {
+//     if (error) {
+//       const data = resObject(200, true, '게시글 등록 성공');
+//       res.send(data)
+//       throw error;
+//     }
+//     const data = resObject(200, true, '게시글 등록 성공');
+//     res.send(data)
+//   });
     const data = resObject(200, true, '게시글 등록 성공');
     res.send(data)
-  });
 });
 
 // 게시글 수정
 // DB 진행 중 
-app.put('/board', function(req, res) {
- 
+app.put('/board/:postId', function(req, res) {
+ console.log(req.body.title, req.body.body)
   // connection.query(sql, params, (error, rows, fields) => {
   //   if (error) throw error;
   //   const data = resObject(200, true, '게시글 수정 성공');
   //   res.send(data)
   // });
+  const data = resObject(200, true, '게시글 수정 성공');
+  res.send(data)
 
 });
 
 app.delete('/board/:postId', (req, res) => {
   // console.log(req)
   const params = req.params.postId;
-  const sql = "DELETE FROM board WHERE id = 0";
+//   const sql = "DELETE FROM board WHERE id = 0";
   console.log("params: ", params, req.query)
-  connection.query(sql, params, (error) => {
-    if (error) throw error;
-    console.log("삭제 성공");
-    const data = resObject(200, true, '게시글 등록 성공');
-    res.send(data)
-  });
-
+//   connection.query(sql, params, (error) => {
+//     if (error) throw error;
+//     console.log("삭제 성공");
+    
+//   });
+  const data = resObject(200, true, '게시글 등록 성공');
+  res.send(data) 
 })
 
 
