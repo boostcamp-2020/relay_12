@@ -1,9 +1,9 @@
+
 const express = require('express');
 const mysql = require('mysql');
 const dbconfig = require('./config/database.js');
 const connection = mysql.createConnection(dbconfig);
 
-const app = express();
 
 
 const resObject = (status, success, message, data) => {
