@@ -40,7 +40,7 @@ app.get('/', function (req, res) {
  * 전체 게시글 리스트 조회
  */
 app.get('/board', function(req,res){
-  const sql = "SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createdAt AS createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id"
+  const sql = "SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id"
   connection.query(sql, (error, rows) => {
     if (error) {
       const data = resObject(400, false, '전체 게시글 리스트 조회 실패', null);
@@ -61,7 +61,7 @@ app.get('/board/:postId', function (req, res) {
   const postId = req.params.postId;
   let data = null;
   
-  const sql = 'SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createdAt AS createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id WHERE b.id =?';
+  const sql = 'SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id WHERE b.id =?';
   connection.query(sql, postId, (error, rows, fields) => {
     if (error) {
       //const
