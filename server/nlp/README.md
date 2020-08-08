@@ -51,3 +51,48 @@ pythonShell.run("is_similar.py", options, (err, result)=>{
 ```
 
 > 출력 결과 : [ 'True' ]
+
+### spawn py ENOENT 오류 시
+
+```
+> npx nodemon app.js
+
+[nodemon] 2.0.4
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json  
+[nodemon] starting `node app.js`
+undefined
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: spawn py ENOENT
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:267:19)
+    at onErrorNT (internal/child_process.js:469:16)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Emitted 'error' event on ChildProcess instance at:
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:273:12)
+    at onErrorNT (internal/child_process.js:469:16)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21) {
+  errno: 'ENOENT',
+  code: 'ENOENT',
+  syscall: 'spawn py',
+  path: 'py',
+  spawnargs: [ '-u', 'nlp\\is_similar.py', 'd' ]
+}
+[nodemon] app crashed - waiting for file changes before starting...
+```
+
+위와 같은 오류 발생 시 `pythonPath`를 'python' 으로 설정하면 된다.
+
+```
+const options = {
+    mode:'text',
+    pythonPath: "python",
+    scriptPath: '',
+    pythonOptions: ['-u'],
+    args:["오늘 영화 어땟어?"]
+}
+```
+
