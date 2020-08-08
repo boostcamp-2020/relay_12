@@ -41,7 +41,8 @@ app.get('/', function (req, res) {
  * 예외 처리 x
  */
 app.get('/board', function(req,res){
-    connection.query('SELECT * from board;', (error, rows) => {
+  const sql = "SELECT b.id AS postId, b.title, u.name AS username, b.createAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id"
+    connection.query(sql, (error, rows) => {
       if (error) {
         const data = resObject(400, false, '전체 게시글 리스트 조회 실패');
         res.send(data)
@@ -59,16 +60,14 @@ app.get('/board', function(req,res){
  */
 app.get('/board/:postId', function (req, res) {
   const postId = req.params.postId;
-
-  const sql = 'SELECT * FROM board WHERE ID = ?';
+  const sql = 'SELECT b.id AS postId, b.title, u.name AS username, b.createAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id WHERE b.id =?';
   connection.query(sql, postId, (error, rows, fields) => {
     if (error) {
       const data = resObject(400, false, '게시글 상세 정보 조희 실패');
       res.send(data);
       throw error;
     }
-    console.log(rows); // isChat : false 가 아니라 0이 입력됨 0: false, 1:true로 판단
-    const data = resObject(200, true, '게시글 상세 정보 조회 성공', rows);
+    const data = resObject(200, true, '게시글 상세 정보 조회 성공', rows[0]);
     res.send(data);
   });
   
@@ -81,8 +80,6 @@ app.get('/board/:postId', function (req, res) {
 app.post('/board', function (req, res) {
   const sql = 'INSERT INTO board (title, body, userId) VALUES(?, ?, ?)';
   const params = [req.body.title, req.body.body, req.body.userId];
-  // params[0] = null // 실패 테스트용
-  // console.log(params)
   connection.query(sql, params, (error, rows, fields) => {
     if (error) {
       const data = resObject(400, false, '게시글 등록 실패');
