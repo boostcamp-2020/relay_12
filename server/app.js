@@ -40,17 +40,18 @@ app.get('/', function (req, res) {
  * 전체 게시글 리스트 조회
  */
 app.get('/board', function(req,res){
-  const sql = "SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id"
+  let data = null;
+  const sql = "SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id";
+  
   connection.query(sql, (error, rows) => {
     if (error) {
-      const data = resObject(400, false, '전체 게시글 리스트 조회 실패', null);
-      res.send(data)
+      data = resObject(400, false, '전체 게시글 리스트 조회 실패', null);
+      res.send(data);
       throw error;
     }
-      const data = resObject(200, true, '전체 게시글 리스트 조회 성공', { list: rows });
-      res.send(data)
+      data = resObject(200, true, '전체 게시글 리스트 조회 성공', { list: rows });
+      res.send(data);
   });
-    
 });
 
 /**
@@ -58,13 +59,12 @@ app.get('/board', function(req,res){
  * 존재하지 않는 postId 들어오면 400 반환
  */
 app.get('/board/:postId', function (req, res) {
-  const postId = req.params.postId;
   let data = null;
-  
+  const postId = req.params.postId;
   const sql = 'SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id WHERE b.id =?';
+  
   connection.query(sql, postId, (error, rows, fields) => {
     if (error) {
-      //const
       data = resObject(400, false, '게시글 상세 정보 조희 실패', null);
       res.send(data);
       throw error;
@@ -73,23 +73,24 @@ app.get('/board/:postId', function (req, res) {
     else data = resObject(200, true, '게시글 상세 정보 조회 성공', rows[0]);
     res.send(data);
   });
-  
 });
 
 /**
  * 게시글 등록
  */
 app.post('/board', function (req, res) {
-  const sql = 'INSERT INTO board (title, body, userId) VALUES(?, ?, ?)';
+  let data = null;
   const params = [req.body.title, req.body.body, req.body.userId];
+  const sql = 'INSERT INTO board (title, body, userId) VALUES(?, ?, ?)';
+  
   connection.query(sql, params, (error, rows, fields) => {
     if (error) {
-      const data = resObject(400, false, '게시글 등록 실패', null);
+      data = resObject(400, false, '게시글 등록 실패', null);
       res.send(data);
       throw error;
     }
     const postId = rows.insertId;
-    const data = resObject(200, true, '게시글 등록 성공', { postId });
+    data = resObject(200, true, '게시글 등록 성공', { postId });
     res.send(data);
   });
 });
@@ -100,11 +101,11 @@ app.post('/board', function (req, res) {
  * 존재하지 않는 postId 들어오면 400 반환
  */
 app.put('/board/:postId', function (req, res) {
-  // const body = req.body;
+  let data = null;
   const postId = req.params.postId;
   const params = [req.body.title, req.body.body];
-  let data = null;
   const sql = 'Update board set title = \'' + params[0] + '\', body = \'' + params[1] + '\'where id = \'' + postId + '\'';
+  
   connection.query(sql, params, (error, rows) => {
     if (error) {
       data = resObject(400, false, '게시글 수정 실패', null);
@@ -122,9 +123,9 @@ app.put('/board/:postId', function (req, res) {
  * 존재하지 않는 postId 들어오면 400 반환
  */
 app.delete('/board/:postId', (req, res) => {
+  let data = null;
   const params = req.params.postId;
   const sql = "DELETE FROM board WHERE id = ?";
-  let data = null;
   
   connection.query(sql, params, (error, rows) => {
     if (error) {
