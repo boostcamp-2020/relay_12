@@ -38,10 +38,9 @@ app.get('/', function (req, res) {
 
 /**
  * 전체 게시글 리스트 조회
- * 예외 처리 x
  */
 app.get('/board', function(req,res){
-  const sql = "SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id"
+  const sql = "SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createAt AS createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id"
   connection.query(sql, (error, rows) => {
     if (error) {
       const data = resObject(400, false, '전체 게시글 리스트 조회 실패', null);
@@ -56,18 +55,22 @@ app.get('/board', function(req,res){
 
 /**
  * 게시글 상세 정보 조회
- * 예외 처리 x
+ * 존재하지 않는 postId 들어오면 400 반환
  */
 app.get('/board/:postId', function (req, res) {
   const postId = req.params.postId;
-  const sql = 'SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id WHERE b.id =?';
+  let data = null;
+  
+  const sql = 'SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createAt AS createdAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id WHERE b.id =?';
   connection.query(sql, postId, (error, rows, fields) => {
     if (error) {
-      const data = resObject(400, false, '게시글 상세 정보 조희 실패');
+      //const
+      data = resObject(400, false, '게시글 상세 정보 조희 실패');
       res.send(data);
       throw error;
     }
-    const data = resObject(200, true, '게시글 상세 정보 조회 성공', rows[0]);
+    if (rows[0] === undefined) data = resObject(400, true, '게시글 상세 정보 조회 실패', "존재하지 않는 게시글입니다.");
+    else data = resObject(200, true, '게시글 상세 정보 조회 성공', rows[0]);
     res.send(data);
   });
   
