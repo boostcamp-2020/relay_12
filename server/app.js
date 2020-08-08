@@ -65,11 +65,11 @@ app.get('/board/:postId', function (req, res) {
   connection.query(sql, postId, (error, rows, fields) => {
     if (error) {
       //const
-      data = resObject(400, false, '게시글 상세 정보 조희 실패');
+      data = resObject(400, false, '게시글 상세 정보 조희 실패', null);
       res.send(data);
       throw error;
     }
-    if (rows[0] === undefined) data = resObject(400, true, '게시글 상세 정보 조회 실패', "존재하지 않는 게시글입니다.");
+    if (rows[0] === undefined) data = resObject(400, false, '게시글 상세 정보 조회 실패', "존재하지 않는 게시글입니다.");
     else data = resObject(200, true, '게시글 상세 정보 조회 성공', rows[0]);
     res.send(data);
   });
@@ -97,45 +97,43 @@ app.post('/board', function (req, res) {
 
 /**
  * 게시글 수정
- * DONE
- * 예외 처리 X
+ * 존재하지 않는 postId 들어오면 400 반환
  */
 app.put('/board/:postId', function (req, res) {
-  let body = req.body;
-  const postId = req.params.postId
-  let params = [body.title, body.body];
-  const sql = 'Update board set title = \'' + params[0] + '\', body = \'' + params[1] + '\'where id = \'' + postId + '\''
-  connection.query(sql, (error, rows) => {
-      if (error) {
-        const data = resObject(400, false, '게시글 수정 실패');
-        console.log("수정 실패");
-        res.send(data)
-        throw error;
-      }
-      const data = resObject(200, true, '게시글 수정 성공');
-      console.log("수정 성공");
+  // const body = req.body;
+  const postId = req.params.postId;
+  const params = [req.body.title, req.body.body];
+  let data = null;
+  const sql = 'Update board set title = \'' + params[0] + '\', body = \'' + params[1] + '\'where id = \'' + postId + '\'';
+  connection.query(sql, params, (error, rows) => {
+    if (error) {
+      data = resObject(400, false, '게시글 수정 실패', null);
       res.send(data);
+      throw error;
+    }
+    if (rows.affectedRows === 0) data = resObject(400, false, '게시글 수정 실패', "존재하지 않는 게시글입니다.");
+    else data = resObject(200, true, '게시글 수정 성공', null);
+    res.send(data);
   });
 });
 
 /**
  * 게시글 삭제 
- * 예외 처리 x 
- * - 없는 postId 일 때 400 반환하기 (x)
+ * 존재하지 않는 postId 들어오면 400 반환
  */
 app.delete('/board/:postId', (req, res) => {
-  // console.log(req)
   const params = req.params.postId;
   const sql = "DELETE FROM board WHERE id = ?";
-  connection.query(sql, params, (error) => {
+  let data = null;
+  
+  connection.query(sql, params, (error, rows) => {
     if (error) {
-      const data = resObject(400, false, '게시글 삭제 실패');
-      console.log("삭제 실패");
-      res.send(data)
+      data = resObject(400, false, '게시글 삭제 실패');
+      res.send(data);
       throw error;
     }
-    console.log("삭제 성공");
-    const data = resObject(200, true, '게시글 삭제 성공');
+    if (rows.affectedRows === 0) data = resObject(400, false, '게시글 삭제 실패', "존재하지 않는 게시글입니다."); 
+    else data = resObject(200, true, '게시글 삭제 성공', null);
     res.send(data)
   });
 })
