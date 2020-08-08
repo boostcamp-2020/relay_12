@@ -10,7 +10,7 @@ CREATE TABLE board (
   id INT(40) NOT NULL auto_increment PRIMARY KEY ,
   title varchar(100) NOT NULL,
   body TEXT,
-  createAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
   userId INT(40) NOT NULL,
   isChat boolean default false);
 
