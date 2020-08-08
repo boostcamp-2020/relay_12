@@ -42,15 +42,15 @@ app.get('/', function (req, res) {
  */
 app.get('/board', function(req,res){
   const sql = "SELECT b.id AS postId, b.title, b.body, u.name AS username, b.createAt, b.isChat FROM board AS b JOIN user AS u ON b.userId = u.id"
-    connection.query(sql, (error, rows) => {
-      if (error) {
-        const data = resObject(400, false, '전체 게시글 리스트 조회 실패');
-        res.send(data)
-        throw error;
-      }
-        const data = resObject(200, true, '전체 게시글 리스트 조회 성공', rows);
-        res.send(data)
-    });
+  connection.query(sql, (error, rows) => {
+    if (error) {
+      const data = resObject(400, false, '전체 게시글 리스트 조회 실패', null);
+      res.send(data)
+      throw error;
+    }
+      const data = resObject(200, true, '전체 게시글 리스트 조회 성공', { list: rows });
+      res.send(data)
+  });
     
 });
 
@@ -75,19 +75,19 @@ app.get('/board/:postId', function (req, res) {
 
 /**
  * 게시글 등록
- * 예외 처리 x
  */
 app.post('/board', function (req, res) {
   const sql = 'INSERT INTO board (title, body, userId) VALUES(?, ?, ?)';
   const params = [req.body.title, req.body.body, req.body.userId];
   connection.query(sql, params, (error, rows, fields) => {
     if (error) {
-      const data = resObject(400, false, '게시글 등록 실패');
-      res.send(data)
+      const data = resObject(400, false, '게시글 등록 실패', null);
+      res.send(data);
       throw error;
     }
-    const data = resObject(200, true, '게시글 등록 성공');
-    res.send(data)
+    const postId = rows.insertId;
+    const data = resObject(200, true, '게시글 등록 성공', { postId });
+    res.send(data);
   });
 });
 
