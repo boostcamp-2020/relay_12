@@ -1,52 +1,66 @@
 import React from 'react';
-import { deletePost } from "../../lib/api";
-import { withRouter } from "react-router-dom";
+import { deletePost } from '../../lib/api';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './style.css';
 import { FaChevronLeft } from 'react-icons/fa';
+import Moment from 'moment';
+import 'moment/locale/ko';
 
-const Board = ({ title, username, createdAt, body, key, history }) => {
-  const handleUpdate = () => {
-    // 상세 정보 수정 페이지로 이동
-    console.log('수정');
+Moment.locale('ko');
+
+const Board = ({ title, username, createdAt, body, key, history, postId }) => {
+  const handleRemove = async () => {
+    try {
+      if (!window.confirm('삭제하시겠습니까?')) {
+        return;
+      }
+      const res = await deletePost(postId);
+      if (!res.success) {
+        throw new Error(res.message);
+      }
+      history.push(`/`);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-    const handleRemove = async (e) => {
-        e.preventDefault();
-        try {
-            await deletePost(props.postId);
-        } catch(err) {
-            console.error(err.message);
-        }
-    }
-
-    return (
-        <>
-            <div className="BoardView">
-                <div className="title">
-                    <h2>{props.title}</h2>
-                </div>
-                <div className="info">
-                    <span>{props.username}</span>
-                    <span>{props.createdAt}</span>
-                </div>
-
-                <div className="board">
-                    <p>{props.body}</p>
-                </div>
-            </div>
-            <Link to={{
-                pathname: `/posts/update/${props.postId}`,
+  return (
+    <>
+      <div className="BoardView">
+        <div className="board-header">
+          <div className="title">
+            <span onClick={history.goBack}>
+              <FaChevronLeft />
+            </span>
+            <h2>{title}</h2>
+          </div>
+          <div className="btn-container">
+            <Link
+              to={{
+                pathname: `/posts/update/${postId}`,
                 state: {
-                    title: props.title,
-                    body: props.body
+                  title: title,
+                  body: body,
                 },
-            }}>
-                <button>수정</button>
+              }}
+            >
+              <button>수정</button>
             </Link>
             <button onClick={handleRemove}>삭제</button>
-        </>
-    );
+          </div>
+        </div>
+        <div className="info">
+          <span>{username}</span>
+          <span className="info-time">{Moment(new Date(createdAt)).fromNow()}</span>
+        </div>
+
+        <div className="board">
+          <p>{body}</p>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default withRouter(Board);

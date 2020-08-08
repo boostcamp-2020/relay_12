@@ -18,17 +18,10 @@ function App() {
         {/* 메인  */}
         <main className="app-main">
           <Switch>
-            <Route exact path="/">
-              {/* 게시글 목록 리스트 컴포넌트 위치 */}
-              <MainPage />
-            </Route>
-            <Route exact path="/posts/:postId">
-              {BoardView}
-            </Route>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/posts/:postId" component={BoardView} />
             <Route path="/posts/update/:postId" component={UpdatePage} />
-            <Route path="/write">
-              {<CreatePage />}
-            </Route>
+            <Route path="/write" component={CreatePage} />
           </Switch>
         </main>
 

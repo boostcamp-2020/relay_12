@@ -1,68 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 릴레이 프로젝트 - 아이러브스쿨
 
-## Available Scripts
+부스트캠프 2020 - 릴레이 프로젝트 12팀 프론트엔드 저장소입니다. <br>
+각 주 마다 다음 팀을 위해 개발 진행상황 및 기여자들을 작성해주세요! <br>
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+### Contributor
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### 2주차
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+> 김현우 손정현 이도경 임한동
 
-### `npm test`
+#### 3주차
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> ..
 
-### `npm run build`
+#### 4주차
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> ..
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### 2주차
 
-### `npm run eject`
+- 메인 board 및 게시글 CRUD 위한 페이지 개발
+- 메인 board 는 pagination 이 가능하도록 함
+- 백엔드 end point 통신을 위한 axios 연동
+- react-router-dom 을 통한 라우팅
+- 그 외 CSS 작업
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### 폴더 구조
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- components : 페이지를 구성하는 각 컴포넌트가 있는 디렉토리
+- lib : 백엔드 api 통신을 위한 axios 관련 함수가 있는 디렉토리
+- pages : 아이러브스쿨의 각 페이지를 담고 있는 디렉토리

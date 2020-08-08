@@ -3,11 +3,9 @@ import './style.css';
 const PostItem = ({ post }) => {
   return (
     <>
-      <li className="list_item">{post.postId}</li>
-      <li className="list_item seperator">|</li>
-      <li className="list_item">{post.title}</li>
-      <li className="list_item seperator">|</li>
-      <li className="list_item">{post.username}</li>
+      <td className="list_item">{post.postId}</td>
+      <td className="list_item">{post.title}</td>
+      <td className="list_item">{post.username}</td>
     </>
   );
 };

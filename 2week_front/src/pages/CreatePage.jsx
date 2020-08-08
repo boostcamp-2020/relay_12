@@ -14,7 +14,7 @@ const CreatePage = (props) => {
         if (!res.success) {
           throw new Error(res.data.message);
         }
-        props.history.push(`/posts/${res.data.postId}`);
+        props.history.replace(`/posts/${res.data.postId}`);
       })
       .catch((err) => {
         console.error(err.message);
