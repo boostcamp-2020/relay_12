@@ -7,7 +7,7 @@ const pythonReader = (fileName, args, postId) => {
 
   const options = {
     mode: 'text',
-    pythonPath: 'python',
+    pythonPath: 'python3',
     pythonOptions: ['-u'],
     scriptPath: './nlp/',
     args: args
