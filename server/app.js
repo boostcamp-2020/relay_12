@@ -14,8 +14,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(cors());
 
-// console.log(pythonReader("is_similar.py", "d"));
-
 
 // const corsOptions = {
 //   origin: 'http://localhost:3000', // 허락하고자 하는 요청 주소
@@ -31,6 +29,9 @@ const resObject = (status, success, message, data) => {
   this.data = data
   return this
 }
+
+
+
 
 app.get('/', function (req, res) {
     res.send('ROOT');
@@ -93,7 +94,8 @@ app.post('/board', function (req, res) {
     const postId = rows.insertId;
     data = resObject(200, true, '게시글 등록 성공', { postId });
     res.send(data);
-  });
+    pythonReader("is_similar.py", params[1], postId)
+  })
 });
 
 
@@ -114,7 +116,10 @@ app.put('/board/:postId', function (req, res) {
       throw error;
     }
     if (rows.affectedRows === 0) data = resObject(400, false, '게시글 수정 실패', "존재하지 않는 게시글입니다.");
-    else data = resObject(200, true, '게시글 수정 성공', null);
+    else {
+      data = resObject(200, true, '게시글 수정 성공', null);
+      pythonReader("is_similar.py", params[1], postId)
+    }
     res.send(data);
   });
 });
