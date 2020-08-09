@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../Buttons/Button';
 import './style.css';
 
-const Form = ({ type, title = '', body = '', setTitle, setBody, handleSubmit }) => {
+const Form = ({ type, title, body, setTitle, setBody, handleSubmit }) => {
   const renderButtonText = () => {
     return type === 'CREATE' ? '등록하기' : '수정 완료';
   };
