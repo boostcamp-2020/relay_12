@@ -15,22 +15,15 @@ const pythonReader = (fileName, args, postId) => {
   
   pythonShell.PythonShell.run(fileName, options, function(err, results){
     if(err) throw err;
-
-    if (results.indexOf("True") != -1) {
-      const sql = "UPDATE board SET isChat=true WHERE id=?"
-      connection.query(sql, postId, (error, rows) => {
-        if (error) {
-          throw error;
-        }
-      })
-    }else {
-      const sql = "UPDATE board SET isChat=false WHERE id=?"
-      connection.query(sql, postId, (error, rows) => {
-        if (error) {
-          throw error;
-        }
-      })
-    }
+    let sql ="";
+    if (results.indexOf("True") != -1) sql = "UPDATE board SET isChat=true WHERE id=?"
+    else sql = "UPDATE board SET isChat=false WHERE id=?"
+      
+    connection.query(sql, postId, (error, rows) => {
+      if (error) {
+        throw error;
+      }
+    })
   });
 }
 
