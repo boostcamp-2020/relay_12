@@ -1,0 +1,53 @@
+.container {
+  height: 100%;
+}
+
+.FilterbtnContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.FilterbtnContainer button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 4px;
+  outline: 0;
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.FilterbtnContainer button:hover {
+  background-color: #ddd;
+}
+
+.BoardContainer {
+  width: 100%;
+  border-collapse: collapse;
+  text-align-last: center;
+  margin-bottom: 1.5rem;
+}
+
+.BoardContainer thead {
+  background-color: rgb(218, 245, 255);
+}
+
+.BoardContainer tr {
+  height: 3rem;
+  line-height: 3rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.BoardContainer tr td:nth-child(1) {
+  width: 20%;
+}
+
+.BoardContainer tr td:nth-child(2) {
+  width: 50%;
+}
+.BoardContainer tr td:nth-child(3) {
+  width: 30%;
+}

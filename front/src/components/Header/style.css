@@ -1,0 +1,10 @@
+header.header {
+  padding: 3rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+header.header a {
+  display: inline-block;
+}
