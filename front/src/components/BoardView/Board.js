@@ -8,7 +8,7 @@ import 'moment/locale/ko';
 
 Moment.locale('ko');
 
-const Board = ({ title, username, createdAt, body, key, history, postId }) => {
+const Board = ({ title, username, createdAt, body, history, postId }) => {
   const handleRemove = async () => {
     try {
       if (!window.confirm('삭제하시겠습니까?')) {
@@ -38,10 +38,7 @@ const Board = ({ title, username, createdAt, body, key, history, postId }) => {
             <Link
               to={{
                 pathname: `/posts/update/${postId}`,
-                state: {
-                  title: title,
-                  body: body,
-                },
+                state: { title, body },
               }}
             >
               <button>수정</button>
