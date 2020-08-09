@@ -51,6 +51,7 @@ app.get('/board', function(req,res){
     }
       data = resObject(200, true, '전체 게시글 리스트 조회 성공', { list: rows });
       res.send(data);
+      
   });
 });
 
