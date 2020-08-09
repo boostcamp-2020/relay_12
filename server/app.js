@@ -107,8 +107,8 @@ app.put('/board/:postId', function (req, res) {
   let data = null;
   const postId = req.params.postId;
   const params = [req.body.title, req.body.body];
-  const sql = 'Update board set title = \'' + params[0] + '\', body = \'' + params[1] + '\'where id = \'' + postId + '\'';
-  
+  // const sql = 'Update board set title = \'' + params[0] + '\', body = \'' + params[1] + '\'where id = \'' + postId + '\'';
+  const sql = 'Update board set title = \'' + params[0] + '\', body = \'' + params[1] + '\' where id = ' + postId;
   connection.query(sql, params, (error, rows) => {
     if (error) {
       data = resObject(400, false, '게시글 수정 실패', null);
