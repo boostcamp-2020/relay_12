@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Board from '../components/BoardView/Board';
 import { getPostById } from '../lib/api';
 
-const BoardView = ({ location, match }) => {
+const BoardView = ({ match }) => {
   const [post, setPost] = useState({});
   const { postId } = match.params;
 
@@ -17,7 +17,6 @@ const BoardView = ({ location, match }) => {
 
   return (
     <Board
-      key={post.postId}
       postId={post.postId}
       title={post.title}
       body={post.body}
