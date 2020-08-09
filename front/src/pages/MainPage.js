@@ -42,7 +42,6 @@ const MainPage = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const PostHeader = { postId: 'No.', title: '제목', username: '작성자', isHeader: '' };
 
   return (
     <>

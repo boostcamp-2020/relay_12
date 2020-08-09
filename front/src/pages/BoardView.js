@@ -4,15 +4,16 @@ import { getPostById } from '../lib/api';
 
 const BoardView = ({ location, match }) => {
   const [post, setPost] = useState({});
+  const { postId } = match.params;
 
   useEffect(() => {
     const fetchPost = () => {
-      getPostById(match.params.postId)
+      getPostById(postId)
         .then((res) => setPost(res.data))
         .catch((err) => console.error(err));
     };
     fetchPost();
-  }, []);
+  }, [postId]);
 
   return (
     <Board

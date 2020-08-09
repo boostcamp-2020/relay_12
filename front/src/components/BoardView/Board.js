@@ -1,10 +1,9 @@
 import React from 'react';
 import { deletePost } from '../../lib/api';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import './style.css';
+import { withRouter, Link } from 'react-router-dom';
 import { FaChevronLeft } from 'react-icons/fa';
 import Moment from 'moment';
+import './style.css';
 import 'moment/locale/ko';
 
 Moment.locale('ko');

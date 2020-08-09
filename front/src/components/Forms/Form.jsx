@@ -3,10 +3,6 @@ import Button from '../Buttons/Button';
 import './style.css';
 
 const Form = ({ type, title = null, body = null, setTitle, setBody, handleSubmit }) => {
-  const renderTitle = () => {
-    return type === 'CREATE' ? '게시글 작성' : '';
-  };
-
   const renderButtonText = () => {
     return type === 'CREATE' ? '등록하기' : '수정 완료';
   };
