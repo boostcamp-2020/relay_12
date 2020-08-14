@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Posts from '../components/Post/Posts';
-import Pagination from '../components/Post/Pagination';
-import { getPosts } from '../lib/api';
-import './mainpage.css';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Posts from "../components/Post/Posts";
+import Pagination from "../components/Post/Pagination";
+import { getPosts } from "../lib/api";
+import "./mainpage.css";
 
 const MainPage = () => {
   const [TotalPosts, setTotalPosts] = useState([]);
@@ -50,7 +50,12 @@ const MainPage = () => {
           <Link to="/write">
             <button>글쓰기</button>
           </Link>
-          <button onClick={FilterChat}>{flag ? '잡담거르기' : '잡담보기'}</button>
+          <Link to="/image/upload">
+            <button>사진합성</button>
+          </Link>
+          <button onClick={FilterChat}>
+            {flag ? "잡담거르기" : "잡담보기"}
+          </button>
         </div>
 
         {loading ? (
