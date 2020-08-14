@@ -1,12 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import MainPage from './pages/MainPage';
-import CreatePage from './pages/CreatePage';
-import UpdatePage from './pages/UpdatePage';
-import BoardView from './pages/BoardView';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import MainPage from "./pages/MainPage";
+import CreatePage from "./pages/CreatePage";
+import UpdatePage from "./pages/UpdatePage";
+import BoardView from "./pages/BoardView";
+import UploadImagePage from "./pages/UploadImagePage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/posts/:postId" component={BoardView} />
             <Route path="/posts/update/:postId" component={UpdatePage} />
             <Route path="/write" component={CreatePage} />
+            <Route path="/image/upload" component={UploadImagePage} />
           </Switch>
         </main>
 

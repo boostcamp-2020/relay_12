@@ -1,0 +1,32 @@
+.image-uploader-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.image-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 15px;
+}
+
+.image-label:hover {
+  cursor: pointer;
+}
+
+.image-uploader {
+  display: none;
+}
+
+.plus-button {
+  font-size: 60px;
+}
+
+.image-desc {
+  font-weight: bold;
+  text-align: center;
+}
