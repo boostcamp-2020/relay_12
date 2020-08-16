@@ -13,7 +13,7 @@
 
 #### 3주차
 
-> ..
+> J038 김부건 J090 박진영 J106 신지연
 
 #### 4주차
 
@@ -45,3 +45,16 @@
 
 - `npm install`
 - `npm start`
+
+#### 3주차
+
+- 이미지 업로드 및 합성이미지 받아오는 페이지 구현
+
+##### 파일/폴더추가
+
+- components : ImageUploader 폴더 추가, 합성이미지를 담는 images 폴더 추가
+- pages : UploadImagePage 추가
+
+##### 실행
+
+- 위와 동일

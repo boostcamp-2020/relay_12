@@ -29,9 +29,10 @@ const upload = multer({
 
 const pythonReader = (fileName, args) => {
   const options = {
+    pythonPath: "python3",
     mode: "text",
     pythonOptions: ["-u"],
-    scriptPath: "../FaceSwap/FaceSwap", //FaceSwap path 변경 필요
+    scriptPath: "../FaceSwap", //FaceSwap path 변경 필요
     args: args,
   };
 
