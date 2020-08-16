@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(cors());
 
-
 // const corsOptions = {
 //   origin: 'http://localhost:3000', // 허락하고자 하는 요청 주소
 //   credentials: true, // true로 하면 설정한 내용을 response 헤더에 추가 해줍니다.
@@ -144,6 +143,5 @@ app.delete('/board/:postId', (req, res) => {
     res.send(data)
   });
 })
-
 
 app.listen(3000, () => console.log('Server is running on port 3000...'));

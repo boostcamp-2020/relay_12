@@ -21,7 +21,7 @@ const UploadImagePage = ({ history }) => {
     console.log(formData);
     axios
       // post 링크를 수정해주세요.
-      .post("http://relay12-ammjb.run.goorm.io/upload", formData)
+      .post("http://localhost:4000/upload", formData)
       .then((res) => {
         console.log(res.data);
         // response로 오는 값들 중 이미지 경로를 setResultImage()안의 인자로 넣어주시면 됩니다.
