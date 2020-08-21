@@ -4,6 +4,12 @@ import imgUser from "./user.JPG";
 import Button from "../Buttons/Button";
 
 class AccountsList extends Component {
+  onBtnClickListener() {
+    if (window.confirm("정말 추가하시겠습니까??") == true) {
+      alert("친구가 추가되었습니다 :-)");
+    }
+  }
+
   getAccountList() {
     let { data } = this.props;
     let accounts = [];
@@ -16,7 +22,12 @@ class AccountsList extends Component {
             <div className="account-item-area">
               <span className="fname">{account.fname}</span>
               <span className="similarity">유사도 :{account.similarity}%</span>
-              <Button className="btn-add">친구등록</Button>
+              <Button
+                className="btn-add"
+                onClick={this.onBtnClickListener.bind(this)}
+              >
+                친구등록
+              </Button>
             </div>
           </li>,
         ]);

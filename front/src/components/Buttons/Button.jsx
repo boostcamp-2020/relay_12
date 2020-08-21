@@ -1,12 +1,20 @@
-import React from 'react';
-import './style.css';
-
+import React from "react";
+import "./style.css";
 
 const Button = (props) => {
   return (
-  <button className="button">{ props.children }</button>
-  )
+    <button
+      className="button"
+      onClick={(e) => {
+        let { onClick } = props;
+        if (onClick !== undefined) {
+          onClick();
+        }
+      }}
+    >
+      {props.children}
+    </button>
+  );
 };
-
 
 export default Button;
