@@ -43,8 +43,10 @@ class Accounts extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h3>로고</h3>
+        <div className="account-header">
+          <div className="account-title">
+            <h3>친구 찾아보기</h3>
+          </div>
         </div>
         <AccountsList data={this.state.accounts}></AccountsList>
       </div>

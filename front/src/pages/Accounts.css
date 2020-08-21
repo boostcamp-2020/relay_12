@@ -1,0 +1,19 @@
+.account-header {
+    width: 100%;
+    height: 70px;
+    margin-bottom: 10px;
+    background-color: rgb(22, 160, 134);
+    text-align: center;
+
+}
+
+.account-header>.account-title {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.account-header>.account-title>h3 {
+    font-size: 16pt;
+    color: white;
+}

@@ -1,17 +1,17 @@
-#fname,
-#similarity {
+.fname,
+.similarity {
     font-size: 20pt;
 }
 
-#fname {
+.fname {
     margin-left: 80px;
 }
 
-#similarity {
+.similarity {
     margin-left: 20px;
 }
 
-#user-img {
+.user-img {
     margin-left: 10px;
     width: 65px;
     height: 65px;
