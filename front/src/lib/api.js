@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const endpoint = 'http://localhost:3000'; // not sure
+const endpoint = 'http://localhost:3003'; // not sure
 
 // 전체 게시글 리스트 조회
 export const getPosts = async () => {
