@@ -3,7 +3,7 @@ import Input from "@material-ui/core/Input";
 import FormLabel from "@material-ui/core/FormLabel";
 import axios from "axios";
 
-const Signup = () => {
+const Signup = (props) => {
   const [name, setName] = useState();
   const [id, setId] = useState(""); // id
   const [password, setPassword] = useState(""); // pw
@@ -43,6 +43,8 @@ const Signup = () => {
       .then((res) => {
         console.log(res.data);
       });
+    let { history } = props;
+    history.goBack();
   };
   return (
     <>
@@ -115,6 +117,7 @@ const Signup = () => {
           <label for="hobby"> 헬스 </label><br></br>
           <br />
           <Input type="submit" value="저장"/>
+
         </form>
         <div>
         </div>
