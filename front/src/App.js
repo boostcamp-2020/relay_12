@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import MainPage from "./pages/MainPage";
 import CreatePage from "./pages/CreatePage";
 import UpdatePage from "./pages/UpdatePage";
+import Signup from "./pages/Signup";
 import BoardView from "./pages/BoardView";
 import UploadImagePage from "./pages/UploadImagePage";
 import Accounts from "./pages/Accounts";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/image/upload" component={UploadImagePage} />
             <Route path="/signup" component={Signup} />
             <Route path="/accounts" component={Accounts} />
+            <Route path="/Signup" component={Signup} />
           </Switch>
         </main>
 

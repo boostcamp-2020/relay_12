@@ -50,6 +50,7 @@ const Signup = (props) => {
     <>
       <div className="App">
         <form onSubmit={handlePost}>
+
           <FormLabel htmlFor="name">이름</FormLabel>
           <Input
             name="name"
@@ -120,6 +121,7 @@ const Signup = (props) => {
 
         </form>
         <div>
+
         </div>
       </div>
     </>
