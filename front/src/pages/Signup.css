@@ -1,0 +1,38 @@
+form {
+  width: 400px;
+  margin: 20px;
+}
+
+input {
+  text-align: center;
+  width: 300px;
+  padding: 10px;
+  margin: 5px;
+}
+
+input#submit {
+  width: auto;
+}
+
+label {
+  color: #fff;
+}
+
+div.form{
+  background-color: #222;
+  display: inline-block;  /*Center div on page*/
+}
+
+.Signup {
+  text-align: center;
+}
+
+.Signup-header {
+  height: 50px;
+  padding: 10px;
+  color: white;
+}
+
+.Signup-title {
+  font-size: 1.5em;
+}

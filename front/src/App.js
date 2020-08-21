@@ -9,6 +9,7 @@ import UpdatePage from "./pages/UpdatePage";
 import BoardView from "./pages/BoardView";
 import UploadImagePage from "./pages/UploadImagePage";
 import Accounts from "./pages/Accounts";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/posts/update/:postId" component={UpdatePage} />
             <Route path="/write" component={CreatePage} />
             <Route path="/image/upload" component={UploadImagePage} />
+            <Route path="/signup" component={Signup} />
             <Route path="/accounts" component={Accounts} />
           </Switch>
         </main>

@@ -53,6 +53,9 @@ const MainPage = () => {
           <Link to="/image/upload">
             <button>사진합성</button>
           </Link>
+          <Link to="/signup">
+            <button>회원가입</button>
+          </Link>
           <button onClick={FilterChat}>
             {flag ? "잡담거르기" : "잡담보기"}
           </button>
