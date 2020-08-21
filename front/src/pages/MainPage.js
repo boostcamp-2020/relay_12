@@ -48,7 +48,7 @@ const MainPage = () => {
       <div className="container ">
         <div className="FilterbtnContainer">
           <Link to="/write">
-            <button>글쓰기</button>
+            <button>글쓰기!</button>
           </Link>
           <Link to="/image/upload">
             <button>사진합성</button>

@@ -8,6 +8,7 @@ import CreatePage from "./pages/CreatePage";
 import UpdatePage from "./pages/UpdatePage";
 import BoardView from "./pages/BoardView";
 import UploadImagePage from "./pages/UploadImagePage";
+import Accounts from "./pages/Accounts";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/posts/update/:postId" component={UpdatePage} />
             <Route path="/write" component={CreatePage} />
             <Route path="/image/upload" component={UploadImagePage} />
+            <Route path="/accounts" component={Accounts} />
           </Switch>
         </main>
 

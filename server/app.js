@@ -7,6 +7,18 @@ const mysql = require('mysql');
 const dbconfig = require('./config/database.js');
 const connection = mysql.createConnection(dbconfig);
 const pythonReader = require('./pythonReader');
+const port = 5000;
+
+//db설정
+const models = require('./models/index.js');
+//db연결
+models.sequelize.sync().then(() => {
+  console.log("===========================DB 연결 성공===========================");
+}).catch(err => {
+  console.log("=========================== DB 연결 실패===========================");
+  console.log(err);
+});
+
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -144,4 +156,4 @@ app.delete('/board/:postId', (req, res) => {
   });
 })
 
-app.listen(3000, () => console.log('Server is running on port 3000...'));
+app.listen(port, () => console.log(`Server is running on port ${port}...`));
