@@ -12,10 +12,10 @@ class AccountsList extends Component {
         console.log(acc);
         return acc.concat([
           <li className="account-list-item">
-            <img id="user-img" src={imgUser} alt="" />
+            <img className="user-img" src={imgUser} alt="" />
             <div className="account-item-area">
-              <span id="fname">{account.fname}</span>
-              <span id="similarity">유사도 :{account.similarity}%</span>
+              <span className="fname">{account.fname}</span>
+              <span className="similarity">유사도 :{account.similarity}%</span>
               <Button className="btn-add">친구등록</Button>
             </div>
           </li>,
