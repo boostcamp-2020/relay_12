@@ -1,0 +1,46 @@
+#fname,
+#similarity {
+    font-size: 20pt;
+}
+
+#fname {
+    margin-left: 80px;
+}
+
+#similarity {
+    margin-left: 20px;
+}
+
+#user-img {
+    margin-left: 10px;
+    width: 65px;
+    height: 65px;
+}
+
+.button {
+    width: 110px;
+    height: 40px;
+    font-size: 12pt;
+    float: right;
+    margin-right: 20px;
+}
+
+.account-list-container {
+    border: 1px solid black;
+    list-style: none;
+    padding-left: 0px;
+}
+
+.account-list-container>.account-list-item {
+    height: 70px;
+    position: relative;
+    border-bottom: 1px solid black;
+}
+
+.account-list-container>.account-list-item>.account-item-area {
+    /* background-color: red; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
