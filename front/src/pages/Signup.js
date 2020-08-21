@@ -1,65 +1,105 @@
-import React, { Component } from 'react';
-import './Signup.css';
+import React, { useState } from "react";
+import Input from "@material-ui/core/Input";
+import NativeSelect from "@material-ui/core/NativeSelect";
+import FormLabel from "@material-ui/core/FormLabel";
+import axios from "axios";
 
-class Signup extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      id: '',
-      password: '',
-      password2: '',
-      school: '',
-      interest: '',
-      name: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-   
-  }
+const Signup = () => {
+  const [name, setName] = useState();
+  const [id, setId] = useState(""); // id
+  const [password, setPassword] = useState(""); // pw
+  const [school, setSchool] = useState(""); // school
+  const [hobby, setHobby] = useState("선택"); // interests
 
-  handleChange(e) {
-    let key = e.target.dataset.statekey;
-    let value = e.target.value;
-    this.setState({ [key]: value})
-  }
+  const setNameText = e => {
+    setName(e.target.value);
+  };
+  const setIdText = e => {
+    setId(e.target.value);
+  };
 
-  handleSubmit(e) {
+  const setPasswordText = e => {
+    setPassword(e.target.value);
+  };
+  const setSchoolText = e => {
+    setSchool(e.target.value);
+  };
+  const setHobbyText = e => {
+    setHobby(e.target.value);
+  };
+  const handlePost = (e) => {
+    console.log()
+    console.log('e');
+    console.log(e.target.id.value);
     e.preventDefault();
-
-    let { password, password2 } = this.state;
-
-    if(password !== password2) {
-      this.setState({
-        password: '',
-        password2: ''
-      })
-      return alert('Passwords do not match')
-    }
-
-  }
-
-  render() {
-    let { id, password, password2, school, interest, name } = this.state;
-    return (
-      <div className="Signup">
-        <header className="Signup-header">
-          <h1 className="Signup-title">Simple Sign Up</h1>
-        </header>
-        <div onSubmit={this.handleSubmit} className="form">
-          <form action="">
-            <input type="id" name="id" placeholder="id" required value={id} data-statekey='id' onChange={this.handleChange}/>
-            <input type="password" name="password" placeholder="Password" required value={password} data-statekey='password' onChange={this.handleChange}/>
-            <input type="password" name="password2" placeholder="Confirm Password" required value={password2} data-statekey='password2'onChange={this.handleChange}/>
-            <input type="school" name="school" placeholder="school" required value={school} data-statekey='school' onChange={this.handleChange}/>
-            <input type="interest" name="interest" placeholder="interest" required value={interest} data-statekey='interest' onChange={this.handleChange}/>
-            <input type="name" name="name" placeholder="name" required value={name} data-statekey='name' onChange={this.handleChange}/>
-            <input type="submit" value="Submit" id="submit"/>
-          </form>
+    const formData = new FormData();
+    formData.append("id", e.target.id.value);
+    formData.append("password", e.target.password.value);
+    formData.append("name", e.target.name.value);
+    formData.append("school", e.target.school.value);
+    formData.append("hobby", e.target.hobby.value);
+    console.log('form data')
+    console.log(formData);
+    axios
+      // post 링크를 수정해주세요.
+      .post("http://localhost:4000/upload", formData)
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+  return (
+    <>
+      <div className="App">
+        <form onSubmit={handlePost}>
+          <FormLabel htmlFor="name">이름</FormLabel>
+          <Input
+            name="name"
+            id="name"
+            placeholder="홍길동"
+            onChange={setNameText}
+          />
+          <br />
+          <FormLabel htmlFor="id">아이디</FormLabel>
+          <Input
+            name="id"
+            id="id"
+            placeholder="choigangZeeZone"
+            onChange={setIdText}
+            value={id}
+          />
+          <br />
+          <FormLabel htmlFor="password">비밀번호</FormLabel>
+          <Input
+            name="password"
+            id="password"
+            placeholder="********"
+            onChange={setPasswordText}
+            value={password}
+          />
+          <br />
+          <FormLabel htmlFor="school">학교</FormLabel>
+          <Input
+            name="school"
+            id="school"
+            placeholder="부캠어린이집"
+            onChange={setSchoolText}
+          />
+          <br />
+          <FormLabel htmlFor="hobby">취미</FormLabel>
+          <NativeSelect id="hobby" name="hobby" onChange={setHobbyText}>
+            <option value={hobby}>선택</option>
+            <option value="soccer">축구</option>
+            <option value="music">음악 감상</option>
+            <option value="movie">영화 감상</option>
+          </NativeSelect>
+          <br />
+          <Input type="submit" value="저장"/>
+        </form>
+        <div>
         </div>
       </div>
-    );
-  }
-}
+    </>
+  );
+};
 
-export default Signup;
+export default Signup; 
