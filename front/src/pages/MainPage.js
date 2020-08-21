@@ -48,13 +48,16 @@ const MainPage = () => {
       <div className="container ">
         <div className="FilterbtnContainer">
           <Link to="/write">
-            <button>글쓰기!</button>
+            <button>글쓰기</button>
           </Link>
           <Link to="/image/upload">
             <button>사진합성</button>
           </Link>
           <Link to="/signup">
             <button>회원가입</button>
+          </Link>
+          <Link to="/accounts">
+            <button>친구찾기</button>
           </Link>
           <button onClick={FilterChat}>
             {flag ? "잡담거르기" : "잡담보기"}
